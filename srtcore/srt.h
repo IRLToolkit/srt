@@ -243,6 +243,8 @@ typedef enum SRT_SOCKOPT {
    SRTO_CRYPTOMODE = 62,     // Encryption cipher mode (AES-CTR, AES-GCM, ...).
 #endif
 
+   SRTO_SRTLAPATCHES = 120, // Enable SRTLA patches
+
    SRTO_E_SIZE // Always last element, not a valid option.
 } SRT_SOCKOPT;
 

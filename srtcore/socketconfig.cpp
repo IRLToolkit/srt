@@ -903,6 +903,15 @@ struct CSrtConfigSetter<SRTO_RETRANSMITALGO>
     }
 };
 
+template<>
+struct CSrtConfigSetter<SRTO_SRTLAPATCHES>
+{
+    static void set(CSrtConfig& co, const void* optval, int optlen)
+    {
+        co.srtlaPatches = cast_optval<bool>(optval, optlen);
+    }
+};
+
 #ifdef ENABLE_AEAD_API_PREVIEW
 template<>
 struct CSrtConfigSetter<SRTO_CRYPTOMODE>
@@ -997,6 +1006,7 @@ int dispatchSet(SRT_SOCKOPT optName, CSrtConfig& co, const void* optval, int opt
 #ifdef ENABLE_AEAD_API_PREVIEW
         DISPATCH(SRTO_CRYPTOMODE);
 #endif
+        DISPATCH(SRTO_SRTLAPATCHES)
 
 #undef DISPATCH
     default:
